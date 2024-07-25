@@ -3,8 +3,8 @@ import Post from "./Post";
 
 function PostList() {
   const [post, setPost] = useState([]);
-  useEffect(() => {
-    fetch(
+  useEffect(async () => {
+    await fetch(
       "https://newsapi.org/v2/everything?q=tesla&from=2024-06-24&sortBy=publishedAt&apiKey=6968b74405a8401fbc2390b7e75ec2b6"
     )
       .then((res) => res.json())
@@ -21,7 +21,7 @@ function PostList() {
   }
 
   function handleNext() {
-    if (pageNo < Math.floor(post.length / 10) - 1) {
+    if (pageNo < Math.floor((post.length) / 10) - 1) {
       setPageNo(pageNo + 1);
     }
   }
@@ -33,7 +33,7 @@ function PostList() {
           Prev
         </button>
         <span>
-          {pageNo + 1} of {Math.floor(post.length / 10)}
+          {pageNo + 1} of {Math.floor((post.length) / 10)}
         </span>
         <button type="button" className="btn btn-outline-dark" onClick={handleNext}>
           Next
