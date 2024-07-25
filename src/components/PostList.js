@@ -14,10 +14,6 @@ function PostList() {
 
   const [pageNo, setPageNo] = useState(0);
 
-  useEffect(() => {
-    console.log(pageNo);
-  }, [pageNo])
-
   function handlePrev() {
     if (pageNo !== 0) {
       setPageNo(pageNo - 1);
